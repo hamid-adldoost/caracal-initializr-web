@@ -1,0 +1,13 @@
+<p-growl></p-growl>
+<div class="login-page" style="direction: rtl;">
+  <div class="form" (keyup.enter)="submit()">
+    <img src="../../assets/img/logo.png" style="width: 150px;"/>
+    <input matInput type="text" [(ngModel)]="username" placeholder="نام کاربری"/>
+    <input matInput type="password" [(ngModel)]="password" placeholder="گذرواژه"/>
+    <button mat-button (click)="submit()" >ورود</button>
+
+<!--    <p *ngIf="errorMessage" style="color: red;">-->
+<!--      {{errorMessage}}-->
+<!--    </p>-->
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="main-content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats" >
+                        <div class="card-header" data-background-color="green">
+                            <i class="material-icons">group</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">آمار یک</p>
+                            <h3 class="title">{{firstStatisticValue}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a (click)="getFirstStatisticValue()"><i class="material-icons text-danger">refresh</i> بروز رسانی</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats" >
+                        <div class="card-header" data-background-color="orange">
+                            <i class="material-icons">domain</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">آمار دو</p>
+                            <h3 class="title">{{secondStatisticValue}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a (click)="getSecondStatisticValue()"><i class="material-icons text-danger">refresh</i> بروز رسانی</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats" >
+                        <div class="card-header" data-background-color="red">
+                            <i class="material-icons">note</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">آمار سه</p>
+                            <h3 class="title">{{forthStatisticValue | number:'1.1-2'}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a (click)="getForthStatisticsValue()"><i class="material-icons text-danger">refresh</i> بروز رسانی</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats" >
+                        <div class="card-header" data-background-color="blue">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">آمار چهار</p>
+                            <h3 class="title">{{thirdStatisticValue}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <a (click)="getThirdStatisticValue()"><i class="material-icons text-danger">refresh</i> بروز رسانی</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <hr />
+          <br />
+        </div>
+</div>

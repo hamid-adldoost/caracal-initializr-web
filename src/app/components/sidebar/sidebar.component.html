@@ -1,0 +1,100 @@
+<!--<div class="logo" style="direction: ltr;">-->
+<!--<a href="http://www.defanews.ir/" class="simple-text">-->
+<!--<div class="logo-img">-->
+<!--<img src="/assets/img/logo.png" id="logoImg"/>-->
+<!--<br/>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<div class="logo" style="text-align: center; font-family: iran-sans-web;">
+  <img src="/assets/img/logo.png" style="max-width: 180px;"/>
+  <br/>
+  سامانه تولید کد AEF
+  <br/>
+  <div style="overflow-wrap: break-word; max-width: 150px; text-align: center; margin: 0 auto;">
+    Adldoost Enterprise Framework System Generator
+  </div>
+
+</div>
+<div class="sidebar-wrapper">
+  <!--<form class="navbar-form navbar-right" role="search" *ngIf="isMobileMenu()">-->
+  <!--<div class="form-group form-black is-empty">-->
+  <!--<input type="text" class="form-control" placeholder="Search">-->
+  <!--<span class="material-input"></span>-->
+  <!--</div>-->
+  <!--<button type="submit" class="btn btn-white btn-round btn-just-icon">-->
+  <!--<i class="material-icons">search</i><div class="ripple-container"></div>-->
+  <!--</button>-->
+  <!--</form>-->
+
+  <ul class="nav nav-mobile-menu" *ngIf="isMobileMenu()">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="material-icons">...</i>
+        <span class="notification">0</span>
+        <p class="hidden-lg hidden-md">Notifications</p>
+      </a>
+      <ul class="dropdown-menu">
+        <!--<li><a href="#">Mike John responded to your email</a></li>-->
+        <!--<li><a href="#">You have 5 new tasks</a></li>-->
+        <!--<li><a href="#">You're now friend with Andrew</a></li>-->
+        <!--<li><a href="#">Another Notification</a></li>-->
+        <!--<li><a href="#">Another One</a></li>-->
+      </ul>
+    </li>
+    <!--<li>-->
+    <!--<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">-->
+    <!--<i class="material-icons">person</i>-->
+    <!--<p class="hidden-lg hidden-md">Profile</p>-->
+    <!--</a>-->
+    <!--</li>-->
+    <li>
+      <a id="logout" class="dropdown-toggle" (click)="logout()" data-toggle="dropdown">
+        <i class="material-icons">power_settings_new</i>خروج
+        <!--<p class="hidden-lg hidden-md">Profile</p>-->
+      </a>
+    </li>
+  </ul>
+
+  <div class="nav-container">
+    <ul class="nav">
+      <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+        <a [routerLink]="[menuItem.path]" (click)="activateChild(menuItem)">
+          <span *ngIf="menuItem.children"><i class="material-icons" style="font-size: 12pt">details</i></span>
+          <i class="material-icons">{{menuItem.icon}}</i>
+          <p>{{menuItem.title}}</p>
+        </a>
+        <div style="margin-left: 15px; font-size: smaller;" *ngIf="menuItem.children && menuItem.showChildren">
+          <ul class="nav">
+            <li [routerLinkActive]="getRouterLinkActive(menuItem2)" *ngFor="let menuItem2 of menuItem.children"
+                class="{{menuItem2.class}}">
+              <a [routerLink]="[menuItem2.path]" (click)="activateChild(menuItem2)">
+                <span *ngIf="menuItem2.children"><i class="material-icons" style="font-size: 10pt">details</i></span>
+                <i class="material-icons">{{menuItem2.icon}}</i>
+                <p>{{menuItem2.title}}</p>
+              </a>
+
+              <div style="margin-left: 15px; font-size: smaller;" *ngIf="menuItem2.children && menuItem2.showChildren">
+                <ul class="nav">
+                  <li routerLinkActive="active" *ngFor="let menuItem3 of menuItem2.children"
+                      class="{{menuItem3.class}}">
+                    <a [routerLink]="[menuItem3.path]">
+                      <i class="material-icons">{{menuItem3.icon}}</i>
+                      <p>{{menuItem3.title}}</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div style="min-height: 100px;">
+
+    </div>
+  </div>
+
+</div>
+

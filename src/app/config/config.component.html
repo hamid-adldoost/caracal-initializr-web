@@ -1,0 +1,232 @@
+<p-toast [style]="{marginTop: '30px'}" position="top-center" ></p-toast>
+<div id="form" class="main-content">
+
+  <div class="ui-rtl" dir="rtl">
+    <div class="alert alert-danger" style="margin-bottom: 0; font-family:iran-sans-web;"
+         [@errorState]="form.dirty && !form.valid ? 'visible' : 'hidden'">
+      اطلاعات وارد شده صحیح نیست
+    </div>
+
+    <p-panel>
+      <p-header>
+        تنظیمات
+      </p-header>
+
+      <form #form="ngForm">
+
+        <div class="row" style="direction: rtl;">
+          <div class="col-lg-4">
+
+            contextPath:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="contextPathInput" pInputText type="text" [(ngModel)]="backendConfig.contextPath"  >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            backend portNumber:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="nameInput" pInputText type="text" [(ngModel)]="backendConfig.backendPortNumber" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            base package:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="basePackageInput" pInputText type="text" [(ngModel)]="backendConfig.basePackage" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            database jdbc url :
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="jdbcUrlInput" pInputText type="text" [(ngModel)]="backendConfig.databaseConnection.datasourceUrl" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            database username :
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="databaseUsernameInput" pInputText type="text" [(ngModel)]="backendConfig.databaseConnection.datasourceUsername" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            database password :
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="dbPasswordInput" pInputText type="text" [(ngModel)]="backendConfig.databaseConnection.datasourcePassword" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            database schema name:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="dbSchemaInput" pInputText type="text" [(ngModel)]="backendConfig.databaseConnection.schemaName" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            maven project name:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="mavenProjectNameInput" pInputText type="text" [(ngModel)]="backendConfig.mavenConfig.projectName" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            maven project group id:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="mavenProjectGroupInput" pInputText type="text" [(ngModel)]="backendConfig.mavenConfig.mavenGroupId" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            maven project artifact id:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="mavenArtifactInput" pInputText type="text" [(ngModel)]="backendConfig.mavenConfig.mavenArtifactId" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            maven project description :
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="mavenDescInput" pInputText type="text" [(ngModel)]="backendConfig.mavenConfig.projectDescription" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            jwt key:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="jwtKeyInput" pInputText type="text" [(ngModel)]="backendConfig.securityConfig.jwtKey" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            token expiration:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="jwtExpInput" pInputText type="text" [(ngModel)]="backendConfig.securityConfig.tokenExpiration" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            backend target path:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="backendTargetInput" pInputText type="text" [(ngModel)]="backendConfig.targetPath" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            frontend target path:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="frontendTargetInput" pInputText type="text" [(ngModel)]="frontendConfig.targetPath" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            frontend project name:
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="frontProjectNameInput" pInputText type="text" [(ngModel)]="frontendConfig.projectName" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+        <div class="row" style="direction: rtl">
+          <div class="col-lg-4">
+
+            frontend project farsi name :
+          </div>
+          <div class="col-lg-4" style="text-align: left;">
+            <input name="frontProjectFarsiNameInput" pInputText style="direction: rtl !important;" type="text" [(ngModel)]="frontendConfig.projectFarsiName" >
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px;">
+          <div class="col-lg-12">
+            <button type="button" (click)="save()" class="btn btn-info">ذخیره</button>
+          </div>
+        </div>
+
+      </form>
+    </p-panel>
+
+  </div>
+</div>

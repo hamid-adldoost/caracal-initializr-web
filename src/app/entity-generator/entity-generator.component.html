@@ -1,0 +1,87 @@
+<p-toast [style]="{marginTop: '30px'}" position="top-center" ></p-toast>
+<div id="form" class="main-content">
+
+  <div class="ui-rtl" dir="rtl">
+    <div class="alert alert-danger" style="margin-bottom: 0; font-family:iran-sans-web;"
+         [@errorState]="form.dirty && !form.valid ? 'visible' : 'hidden'">
+      اطلاعات وارد شده صحیح نیست
+    </div>
+
+    <p-panel>
+      <p-header>
+        موجودیت ها
+      </p-header>
+
+      <form #form="ngForm">
+
+        <button type="button" (click)="addEntity()" class="btn btn-info">افزودن موجودیت</button>
+
+        <p-tabView (onClose)="removeEntity($event)">
+          <p-tabPanel closable="true"  style="border-color: black; border-style: solid; border-width: 1px;" *ngFor="let item of entityDefinitionList; let i = index" [selected]="i == 0" [header]="item.name + '(' + i + ')'">
+
+            <div class="row" style="direction: ltr">
+              <div class="col-lg-3 col-md-6 col-sm-12">
+
+                Entity Name :
+              </div>
+              <div class="col-lg-9 col-md-6 col-sm-12" >
+                <input name="entityNameInput{{i}}" pInputText type="text" [(ngModel)]="item.name" >
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+
+                Entity Farsi Name :
+              </div>
+              <div class="col-lg-9 col-md-6 col-sm-12">
+                <input name="entityFarsiNameInput{{i}}" pInputText type="text" [(ngModel)]="item.farsiName" >
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+
+                Entity Label Field :
+              </div>
+              <div class="col-lg-9 col-md-6 col-sm-12">
+                <input name="entityLabelInput{{i}}" pInputText type="text" [(ngModel)]="item.label" >
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+
+                Fields :
+              </div>
+              <div class="col-lg-9 col-md-6 col-sm-12">
+                <button type="button" (click)="addField(item)" class="btn btn-info">افزودن فیلد</button>
+                <div  style="max-width: 500px;">
+                  <p-tabView (onClose)="removeField(item, $event)">
+                    <p-tabPanel closable="true"  style="border-color: black; border-style: solid; border-width: 1px;" *ngFor="let field of item.entityFieldDefinitionList; let j = index" [selected]="j == 0" [header]="field.name + '(' + j + ')'">
+                      <div class="row" style="direction: ltr">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          Field Name :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12" >
+                          <input name="fieldNameInput{{i}}{{j}}" pInputText type="text" [(ngModel)]="field.name" >
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          Field Farsi Name :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12" >
+                          <input name="fieldFarsiNameInput{{i}}{{j}}" pInputText type="text" [(ngModel)]="field.farsiName" >
+                        </div>
+                      </div>
+                    </p-tabPanel>
+                  </p-tabView>
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+
+        <div class="row" style="margin-top: 30px;">
+          <div class="col-lg-12">
+            <button type="button" (click)="save()" class="btn btn-info">ذخیره</button>
+          </div>
+        </div>
+
+      </form>
+    </p-panel>
+
+  </div>
+</div>
