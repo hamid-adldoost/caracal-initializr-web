@@ -1,4 +1,4 @@
-<p-toast [style]="{marginTop: '30px'}" position="top-center" ></p-toast>
+<p-toast [style]="{marginTop: '30px'}" position="top-center"></p-toast>
 <div id="form" class="main-content">
 
   <div class="ui-rtl" dir="rtl">
@@ -17,29 +17,31 @@
         <button type="button" (click)="addEntity()" class="btn btn-info">افزودن موجودیت</button>
 
         <p-tabView (onClose)="removeEntity($event)">
-          <p-tabPanel closable="true"  style="border-color: black; border-style: solid; border-width: 1px;" *ngFor="let item of entityDefinitionList; let i = index" [selected]="i == 0" [header]="item.name + '(' + i + ')'">
+          <p-tabPanel closable="true" style="border-color: black; border-style: solid; border-width: 1px;"
+                      *ngFor="let item of entityDefinitionList; let i = index" [selected]="i == 0"
+                      [header]="item.name + '(' + i + ')'">
 
             <div class="row" style="direction: ltr">
               <div class="col-lg-3 col-md-6 col-sm-12">
 
                 Entity Name :
               </div>
-              <div class="col-lg-9 col-md-6 col-sm-12" >
-                <input name="entityNameInput{{i}}" pInputText type="text" [(ngModel)]="item.name" >
+              <div class="col-lg-9 col-md-6 col-sm-12">
+                <input name="entityNameInput{{i}}" pInputText type="text" [(ngModel)]="item.name">
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12">
 
                 Entity Farsi Name :
               </div>
               <div class="col-lg-9 col-md-6 col-sm-12">
-                <input name="entityFarsiNameInput{{i}}" pInputText type="text" [(ngModel)]="item.farsiName" >
+                <input name="entityFarsiNameInput{{i}}" pInputText type="text" [(ngModel)]="item.farsiName">
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12">
 
                 Entity Label Field :
               </div>
               <div class="col-lg-9 col-md-6 col-sm-12">
-                <input name="entityLabelInput{{i}}" pInputText type="text" [(ngModel)]="item.label" >
+                <input name="entityLabelInput{{i}}" pInputText type="text" [(ngModel)]="item.label">
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12">
 
@@ -47,25 +49,84 @@
               </div>
               <div class="col-lg-9 col-md-6 col-sm-12">
                 <button type="button" (click)="addField(item)" class="btn btn-info">افزودن فیلد</button>
-                <div  style="max-width: 500px;">
+                <div style="max-width: 500px;">
                   <p-tabView (onClose)="removeField(item, $event)">
-                    <p-tabPanel closable="true"  style="border-color: black; border-style: solid; border-width: 1px;" *ngFor="let field of item.entityFieldDefinitionList; let j = index" [selected]="j == 0" [header]="field.name + '(' + j + ')'">
+                    <p-tabPanel closable="true" style="border-color: black; border-style: solid; border-width: 1px;"
+                                *ngFor="let field of item.entityFieldDefinitionList; let j = index" [selected]="j == 0"
+                                [header]="field.name + '(' + j + ')'">
                       <div class="row" style="direction: ltr">
                         <div class="col-lg-6 col-md-6 col-sm-12">
 
                           Field Name :
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12" >
-                          <input name="fieldNameInput{{i}}{{j}}" pInputText type="text" [(ngModel)]="field.name" >
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <input name="fieldNameInput{{i}}{{j}}" pInputText type="text" [(ngModel)]="field.name">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
 
                           Field Farsi Name :
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12" >
-                          <input name="fieldFarsiNameInput{{i}}{{j}}" pInputText type="text" [(ngModel)]="field.farsiName" >
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <input name="fieldFarsiNameInput{{i}}{{j}}" pInputText type="text"
+                                 [(ngModel)]="field.farsiName">
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          Field Type :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <p-dropdown name="fieldTypeNgModel" [options]="fieldTypeList"
+                                      [(ngModel)]="field.fieldType.type" dataKey="value"
+                                      (onChange)="fieldTypeChanged(field)">
+                          </p-dropdown>
+                        </div>
+
                       </div>
+
+                      <p-panel header="گزینه ها"
+                               *ngIf="field.fieldType.type == 'DropDown' || field.fieldType.type == 'RadioButton'">
+
+                        <!--{{field.fieldType.options}}-->
+                        <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+
+                            Field Options :
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12"
+                               style=" padding: 5px; min-height: 10px; border-style: solid; border-width: 1px; border-color: #00a5bb;">
+                            <span *ngFor="let option of field.fieldType.options; let k = index;">
+                              <div class="row">
+                                <div class="col-xs-10">
+                                  label: {{option.label}}, value: {{option.value}}
+                                </div>
+                                 <div class="col-xs-2">
+                                  <button type="button" (click)="removeOption(field, k)" style="color: red;"> x</button>
+                                </div>
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+
+                            Option Label :
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" name="choiceLabelInput" pInputText [(ngModel)]="choice.label">
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+
+                            Option Value :
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" name="choiceValueInput" pInputText [(ngModel)]="choice.value">
+                          </div>
+                          <div class="col-g-12">
+
+                            <button type="button" (click)="addChoice(field)" class="btn btn-info">افزودن</button>
+                          </div>
+                        </div>
+                      </p-panel>
                     </p-tabPanel>
                   </p-tabView>
                 </div>
@@ -75,8 +136,14 @@
         </p-tabView>
 
         <div class="row" style="margin-top: 30px;">
-          <div class="col-lg-12">
+          <div class="col-lg-4">
+            <button type="button" (click)="reload()" class="btn btn-info">بازیابی</button>
+          </div>
+          <div class="col-lg-4">
             <button type="button" (click)="save()" class="btn btn-info">ذخیره</button>
+          </div>
+          <div class="col-lg-4">
+            <button type="button" (click)="send()" class="btn btn-info">ارسال</button>
           </div>
         </div>
 

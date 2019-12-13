@@ -5,7 +5,7 @@ export class FieldType {
   type = '' ; // DropDown, RadioButton, String, Date, ...
   referenceUrl = '';
   defaultValue = '';
-  options: Choice[];
+  options: any;
   optionLabel: String ;
   optionValue: String ;
   colspan = 2 ;

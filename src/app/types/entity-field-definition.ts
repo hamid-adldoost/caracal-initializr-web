@@ -5,11 +5,15 @@ export class EntityFieldDefinition {
   name = '';
   farsiName = '';
   fieldType: FieldType ;
-  nullable: Boolean ;
+  nullable = true ;
   length: number;
   visible = true;
   readOnly = false;
   unique = false;
   validationRegex: String ;
 
+
+  constructor() {
+    this.fieldType = new FieldType();
+  }
 }

@@ -55,6 +55,8 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TabViewModule} from 'primeng/tabview';
 import {FieldsetModule} from 'primeng/fieldset';
+import { StringifyPipe } from './pipes/stringify.pipe';
+import { JsonizePipe } from './pipes/jsonize.pipe';
 
 
 @NgModule({
@@ -67,6 +69,8 @@ import {FieldsetModule} from 'primeng/fieldset';
     LoginComponent,
     ConfigComponent,
     EntityGeneratorComponent,
+    StringifyPipe,
+    JsonizePipe,
 
   ],
   imports: [
