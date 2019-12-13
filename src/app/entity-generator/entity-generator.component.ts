@@ -55,11 +55,13 @@ export class EntityGeneratorComponent implements OnInit {
   addEntity() {
     this.entityDefinitionList.push(new EntityDefinition());
     console.log('entity definition list', this.entityDefinitionList);
+    this.refreshEntityTypes();
   }
 
   removeEntity(event) {
     console.log('event', event);
     this.entityDefinitionList.splice(event.index, 1);
+    this.refreshEntityTypes();
   }
 
   save() {
@@ -106,5 +108,24 @@ export class EntityGeneratorComponent implements OnInit {
 
   reload() {
     this.systemDefinitionHolderService.setSystemDefinition(JSON.parse(localStorage.getItem('json')));
+  }
+
+  refreshEntityTypes() {
+    this.fieldTypeList = [
+      {label: 'String', value: 'String'},
+      {label: 'Integer', value: 'Integer'},
+      {label: 'Long', value: 'Long'},
+      {label: 'Float', value: 'Float'},
+      {label: 'Double', value: 'Double'},
+      {label: 'Date', value: 'Date'},
+      {label: 'DropDown', value: 'DropDown'},
+      {label: 'RadioButton', value: 'RadioButton'}
+    ];
+
+    this.entityDefinitionList.forEach(e => {
+      if (e.name) {
+        this.fieldTypeList.push({label: e.name, value: e.name});
+      }
+    });
   }
 }
