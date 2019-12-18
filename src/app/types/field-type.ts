@@ -1,8 +1,9 @@
+import {SelectItem} from 'primeng/api';
 import {Choice} from './choice';
 
 export class FieldType {
 
-  type = '' ; // DropDown, RadioButton, String, Date, ...
+  type: any; // DropDown, RadioButton, String, Date, ...
   referenceUrl = '';
   defaultValue = '';
   options: any;

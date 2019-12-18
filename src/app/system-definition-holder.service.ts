@@ -22,8 +22,8 @@ export class SystemDefinitionHolderService {
     this.systemDefinition = systemDefinition;
   }
 
-  public sentJson(): Observable<any> {
-    localStorage.setItem('json', JSON.stringify(this.systemDefinition));
-    return this.httpClient.post(environment.baseServiceUrl + '/generator/generate', this.systemDefinition);
+  public sentJson(json: SystemDefinition): Observable<any> {
+    localStorage.setItem('json', JSON.stringify(json));
+    return this.httpClient.post(environment.baseServiceUrl + '/generator/generate', json);
   }
 }

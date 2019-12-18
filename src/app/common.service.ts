@@ -104,6 +104,20 @@ export class CommonService {
     return result;
   }
 
+
+  preparePureListToDropdownWithNull(input: any[]): any[] {
+    if (!input) {
+      return [];
+    }
+    const result = [];
+    const item = null;
+    result.push(item);
+    input.forEach(i => {
+      result.push(i);
+    });
+    return result;
+  }
+
   fixPersianNumbers = function (str) {
     let persianNumbers: RegExp[], arabicNumbers: RegExp[];
     persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];

@@ -1,4 +1,6 @@
 import {EntityFieldDefinition} from './entity-field-definition';
+import {FieldType} from './field-type';
+import {Choice} from './choice';
 
 export class EntityDefinition {
 
@@ -12,6 +14,13 @@ export class EntityDefinition {
 
   constructor() {
     this.entityFieldDefinitionList = [];
-    this.entityFieldDefinitionList.push(new EntityFieldDefinition());
+    const field = new EntityFieldDefinition();
+    field.fieldType = new FieldType();
+    field.fieldType.type = new Choice();
+    field.fieldType.type.label = 'Long';
+    field.fieldType.type.value = 'Long';
+    field.farsiName = 'شناسه';
+    field.name = 'id';
+    this.entityFieldDefinitionList.push(field);
   }
 }

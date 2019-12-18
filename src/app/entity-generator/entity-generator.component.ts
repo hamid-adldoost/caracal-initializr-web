@@ -5,6 +5,8 @@ import {SystemDefinitionHolderService} from '../system-definition-holder.service
 import {EntityFieldDefinition} from '../types/entity-field-definition';
 import {Choice} from '../types/choice';
 import {CommonService} from '../common.service';
+import {SelectItem} from 'primeng/api';
+import {SystemDefinition} from '../types/system-definition';
 
 @Component({
   selector: 'app-entity-generator',
@@ -32,7 +34,7 @@ export class EntityGeneratorComponent implements OnInit {
   options = [];
   choice = new Choice();
 
-  fieldTypeList = [
+  fieldTypeList: SelectItem[] = [
     {label: 'String', value: 'String'},
     {label: 'Integer', value: 'Integer'},
     {label: 'Long', value: 'Long'},
@@ -94,20 +96,35 @@ export class EntityGeneratorComponent implements OnInit {
   }
 
   send() {
-    this.systemDefinitionHolderService.getSystemDefinition().entityDefinitionList.forEach(d => {
+    const savingSysDef = JSON.parse(JSON.stringify(this.systemDefinitionHolderService.getSystemDefinition()));
+    savingSysDef.entityDefinitionList.forEach(d => {
       d.entityFieldDefinitionList.forEach(f => {
-        if(f.fieldType.options) {
-          f.fieldType.options = JSON.stringify(f.fieldType.options);
+        if (f.fieldType.type && f.fieldType.type.value) {
+          // f.fieldType.options = JSON.stringify(f.fieldType.options);
+          f.fieldType.type = f.fieldType.type.value;
+        } else {
+          // f.fieldType.type = null;
         }
+        console.log('fieeeeeeld type', f.fieldType);
       });
     });
-    this.systemDefinitionHolderService.sentJson().subscribe(res => {
+    this.systemDefinitionHolderService.sentJson(savingSysDef).subscribe(res => {
       this.commonService.showSubmitMessage();
     });
   }
 
   reload() {
-    this.systemDefinitionHolderService.setSystemDefinition(JSON.parse(localStorage.getItem('json')));
+    this.ngOnInit();
+    const sysDef: SystemDefinition = JSON.parse(localStorage.getItem('json'));
+    sysDef.entityDefinitionList.forEach(e => {
+      e.entityFieldDefinitionList.forEach(f => {
+        const c = new Choice();
+        c.label = f.fieldType.type;
+        c.value = f.fieldType.type;
+        f.fieldType.type = c;
+      });
+    });
+    this.systemDefinitionHolderService.setSystemDefinition(sysDef);
   }
 
   refreshEntityTypes() {

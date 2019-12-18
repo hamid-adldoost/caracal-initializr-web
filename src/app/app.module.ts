@@ -57,6 +57,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {FieldsetModule} from 'primeng/fieldset';
 import { StringifyPipe } from './pipes/stringify.pipe';
 import { JsonizePipe } from './pipes/jsonize.pipe';
+import {OptionConverterPipe} from './pipes/option-converter.pipe';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { JsonizePipe } from './pipes/jsonize.pipe';
     EntityGeneratorComponent,
     StringifyPipe,
     JsonizePipe,
+    OptionConverterPipe,
 
   ],
   imports: [
@@ -110,7 +112,7 @@ import { JsonizePipe } from './pipes/jsonize.pipe';
     ToastModule,
     BrowserAnimationsModule,
     TabViewModule,
-    FieldsetModule,
+    FieldsetModule
   ],
   providers: [
     AuthService,
