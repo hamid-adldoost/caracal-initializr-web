@@ -4,14 +4,15 @@ import {DatabaseConnection} from './database-connection';
 import {BackendGenerationConfig} from './backend-generation-config';
 
 export class BackendConfig {
-  contextPath: String ;
-  backendPortNumber: number ;
-  basePackage: String ;
-  targetPath: String ;
-  mavenConfig: MavenConfig ;
+  contextPath: String;
+  backendPortNumber: number;
+  basePackage: String;
+  targetPath: String;
+  fileUploadPath: String;
+  mavenConfig: MavenConfig;
   securityConfig: SecurityConfig;
-  databaseConnection: DatabaseConnection ;
-  backendGenerationConfig: BackendGenerationConfig ;
+  databaseConnection: DatabaseConnection;
+  backendGenerationConfig: BackendGenerationConfig;
 
 
   constructor() {
@@ -19,9 +20,10 @@ export class BackendConfig {
     this.backendPortNumber = 8080;
     this.basePackage = 'com.adldoost.generation';
     this.targetPath = 'E:\\adldoost\\generation\\' + new Date().getTime();
+    this.fileUploadPath = 'E:\\adldoost\\upload\\';
+    this.backendGenerationConfig = new BackendGenerationConfig();
     this.mavenConfig = new MavenConfig();
     this.securityConfig = new SecurityConfig();
     this.databaseConnection = new DatabaseConnection();
-    this.backendGenerationConfig = new BackendGenerationConfig();
   }
 }

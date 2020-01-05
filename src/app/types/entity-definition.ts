@@ -10,6 +10,7 @@ export class EntityDefinition {
   entityFieldDefinitionList: EntityFieldDefinition[];
   hasForm = true;
   enableValidation = true;
+  hasAttachment = true;
 
 
   constructor() {

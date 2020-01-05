@@ -45,6 +45,13 @@
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12">
 
+                Entity Has Attachment :
+              </div>
+              <div class="col-lg-9 col-md-6 col-sm-12">
+                <p-inputSwitch name="entityHasAttachmentSwitch{{i}}" [(ngModel)]="item.hasAttachment"></p-inputSwitch>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+
                 Fields :
               </div>
               <div class="col-lg-9 col-md-6 col-sm-12">
@@ -52,7 +59,8 @@
                 <div style="max-width: 500px;">
                   <p-tabView (onChange)="refreshEntityTypes()" (onClose)="removeField(item, $event)">
                     <p-tabPanel closable="true" style="border-color: black; border-style: solid; border-width: 1px;"
-                                *ngFor="let field of item.entityFieldDefinitionList; let j = index" [selected]="j == 0"
+                                *ngFor="let field of item.entityFieldDefinitionList; let j = index"
+                                [selected]="j == 0"
                                 [header]="field.name + '(' + j + ')'">
                       <div class="row" style="direction: ltr">
                         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -72,12 +80,36 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
 
+                          Field Length :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <input name="fieldLengthInput{{i}}{{j}}" pInputText type="number"
+                                 [(ngModel)]="field.length">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          Field Validation Regex :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <input name="fieldRegexInput{{i}}{{j}}" pInputText type="text"
+                                 [(ngModel)]="field.validationRegex">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          visible :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <p-inputSwitch name="fieldVisivleInput{{i}}{{j}}" [(ngModel)]="field.visible"></p-inputSwitch>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
                           Field Type :
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                          <p-dropdown name="fieldTypeNgModel" [options]="commonService.preparePureListToDropdownWithNull(fieldTypeList)"
+                          <p-dropdown name="fieldTypeNgModel"
+                                      [options]="commonService.preparePureListToDropdownWithNull(fieldTypeList)"
                                       [(ngModel)]="field.fieldType.type" dataKey="value" optionLabel="label"
-                                      (onChange)="fieldTypeChanged(field)" >
+                                      (onChange)="fieldTypeChanged(field)">
                           </p-dropdown>
                         </div>
 
