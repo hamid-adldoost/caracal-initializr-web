@@ -11,5 +11,6 @@ export class FieldType {
   optionValue: String ;
   colspan = 2 ;
   password = false;
+  metaType = new Choice(); //currency, iran-mobile, ir-national-code,
 
 }

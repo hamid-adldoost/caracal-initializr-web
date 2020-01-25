@@ -45,6 +45,16 @@ export class EntityGeneratorComponent implements OnInit {
     {label: 'RadioButton', value: 'RadioButton'}
   ];
 
+  metaTypeList: SelectItem[] = [
+    {label: 'انتخاب کنید', value: null},
+    {label: 'CURRENCY', value: 'CURRENCY'},
+    {label: 'INTEGER', value: 'INTEGER'},
+    {label: 'IR_MOBILE', value: 'IR_MOBILE'},
+    {label: 'IR_NATIONAL_CODE', value: 'IR_NATIONAL_CODE'},
+    {label: 'AUTOCOMPLETE', value: 'AUTOCOMPLETE'},
+    {label: 'POPUP_TABLE', value: 'POPUP_TABLE'}
+  ];
+
   ngOnInit() {
     this.entityDefinitionList = this.systemDefinitionHolderService.getSystemDefinition().entityDefinitionList;
     if (!this.entityDefinitionList || this.entityDefinitionList.length == 0) {
@@ -98,15 +108,21 @@ export class EntityGeneratorComponent implements OnInit {
   send() {
     const savingSysDef = JSON.parse(JSON.stringify(this.systemDefinitionHolderService.getSystemDefinition()));
     savingSysDef.entityDefinitionList.forEach(d => {
-      d.entityFieldDefinitionList.forEach(f => {
-        if (f.fieldType.type && f.fieldType.type.value) {
-          // f.fieldType.options = JSON.stringify(f.fieldType.options);
-          f.fieldType.type = f.fieldType.type.value;
-        } else {
-          // f.fieldType.type = null;
-        }
-        console.log('fieeeeeeld type', f.fieldType);
-      });
+      // d.entityFieldDefinitionList.forEach(f => {
+        // if (f.fieldType.type && f.fieldType.type.value) {
+        //   // f.fieldType.options = JSON.stringify(f.fieldType.options);
+        //   f.fieldType.type = f.fieldType.type.value;
+        // } else {
+        //   // f.fieldType.type = null;
+        // }
+        // if (f.fieldType.metaType && f.fieldType.metaType.value) {
+        //   // f.fieldType.options = JSON.stringify(f.fieldType.options);
+        //   f.fieldType.metaType = f.fieldType.metaType.value;
+        // } else {
+        //   // f.fieldType.type = null;
+        // }
+        // console.log('fieeeeeeld type', f.fieldType);
+      // });
     });
     this.systemDefinitionHolderService.sentJson(savingSysDef).subscribe(res => {
       this.commonService.showSubmitMessage();
@@ -122,6 +138,11 @@ export class EntityGeneratorComponent implements OnInit {
         c.label = f.fieldType.type;
         c.value = f.fieldType.type;
         f.fieldType.type = c;
+
+        // const c2 = new Choice();
+        // c2.label = f.fieldType.type;
+        // c2.value = f.fieldType.type;
+        // f.fieldType.metaType = c2;
       });
     });
     this.systemDefinitionHolderService.setSystemDefinition(sysDef);

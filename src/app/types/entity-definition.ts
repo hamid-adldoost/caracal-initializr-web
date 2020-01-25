@@ -4,6 +4,7 @@ import {Choice} from './choice';
 
 export class EntityDefinition {
 
+  header = '';
   name = '';
   farsiName = '';
   label = '';
@@ -11,6 +12,7 @@ export class EntityDefinition {
   hasForm = true;
   enableValidation = true;
   hasAttachment = true;
+  gridColumns = '1';
 
 
   constructor() {

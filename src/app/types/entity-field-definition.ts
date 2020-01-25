@@ -11,6 +11,7 @@ export class EntityFieldDefinition {
   readOnly = false;
   unique = false;
   validationRegex: String ;
+  gridColumns = 1;
 
 
   constructor() {

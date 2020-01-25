@@ -45,6 +45,13 @@
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12">
 
+                Columns Count of Page :
+              </div>
+              <div class="col-lg-9 col-md-6 col-sm-12">
+                <input name="entityColumnsInput{{i}}" pInputText type="text" [(ngModel)]="item.gridColumns">
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+
                 Entity Has Attachment :
               </div>
               <div class="col-lg-9 col-md-6 col-sm-12">
@@ -118,6 +125,23 @@
                                       [(ngModel)]="field.fieldType.type" dataKey="value" optionLabel="label"
                                       (onChange)="fieldTypeChanged(field)">
                           </p-dropdown>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          Meta Type :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <p-dropdown name="metaTypeNgModel"
+                                      [options]="commonService.preparePureListToDropdownWithNull(metaTypeList)"
+                                      [(ngModel)]="field.fieldType.metaType" dataKey="value" optionLabel="label">
+                          </p-dropdown>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                          Grid Columns Portion :
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                          <input name="fieldColumns" pInputText type="number" [(ngModel)]="field.gridColumns" >
                         </div>
 
                       </div>
