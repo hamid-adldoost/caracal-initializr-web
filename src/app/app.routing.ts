@@ -12,7 +12,7 @@ import {EntityGeneratorComponent} from './entity-generator/entity-generator.comp
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'inner/config',
+        redirectTo: 'inner/dashboard',
         pathMatch: 'full'
     },
     {
