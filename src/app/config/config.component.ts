@@ -38,16 +38,17 @@ export class ConfigComponent implements OnInit {
 
   ngOnInit() {
 
-    this.backendConfig = this.systemDefinitionHolderService.getSystemDefinition().backendConfig;
-    this.frontendConfig = this.systemDefinitionHolderService.getSystemDefinition().frontendConfig;
+    this.backendConfig = this.systemDefinitionHolderService.systemDefinition.backendConfig;
+    this.frontendConfig = this.systemDefinitionHolderService.systemDefinition.frontendConfig;
 
     console.log('backend config', this.backendConfig);
     console.log('frontend config', this.frontendConfig);
   }
 
   save() {
-    this.systemDefinitionHolderService.getSystemDefinition().backendConfig = this.backendConfig;
-    this.systemDefinitionHolderService.getSystemDefinition().frontendConfig = this.frontendConfig;
+    this.systemDefinitionHolderService.systemDefinition.backendConfig = this.backendConfig;
+    this.systemDefinitionHolderService.systemDefinition.frontendConfig = this.frontendConfig;
+    this.systemDefinitionHolderService.saveJson();
     this.commonService.showInfoMessage('اطلاعات با موفقیت ثبت شد');
   }
 }

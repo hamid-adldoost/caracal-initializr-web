@@ -56,12 +56,11 @@ export class EntityGeneratorComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.entityDefinitionList = this.systemDefinitionHolderService.getSystemDefinition().entityDefinitionList;
+    this.entityDefinitionList = this.systemDefinitionHolderService.systemDefinition.entityDefinitionList;
     if (!this.entityDefinitionList || this.entityDefinitionList.length == 0) {
       this.entityDefinitionList = [];
       this.addEntity();
     }
-
   }
 
   addEntity() {
@@ -77,7 +76,9 @@ export class EntityGeneratorComponent implements OnInit {
   }
 
   save() {
-    this.systemDefinitionHolderService.getSystemDefinition().entityDefinitionList = this.entityDefinitionList;
+    this.systemDefinitionHolderService.systemDefinition.entityDefinitionList = this.entityDefinitionList;
+    this.systemDefinitionHolderService.saveJson();
+    this.commonService.showInfoMessage('اطلاعات در مرورگر ذخیره شد');
   }
 
   addField(item: EntityDefinition) {
@@ -106,32 +107,20 @@ export class EntityGeneratorComponent implements OnInit {
   }
 
   send() {
-    const savingSysDef = JSON.parse(JSON.stringify(this.systemDefinitionHolderService.getSystemDefinition()));
-    savingSysDef.entityDefinitionList.forEach(d => {
-      // d.entityFieldDefinitionList.forEach(f => {
-        // if (f.fieldType.type && f.fieldType.type.value) {
-        //   // f.fieldType.options = JSON.stringify(f.fieldType.options);
-        //   f.fieldType.type = f.fieldType.type.value;
-        // } else {
-        //   // f.fieldType.type = null;
-        // }
-        // if (f.fieldType.metaType && f.fieldType.metaType.value) {
-        //   // f.fieldType.options = JSON.stringify(f.fieldType.options);
-        //   f.fieldType.metaType = f.fieldType.metaType.value;
-        // } else {
-        //   // f.fieldType.type = null;
-        // }
-        // console.log('fieeeeeeld type', f.fieldType);
-      // });
-    });
-    this.systemDefinitionHolderService.sentJson(savingSysDef).subscribe(res => {
-      this.commonService.showSubmitMessage();
+    const savingSysDef = JSON.parse(JSON.stringify(this.systemDefinitionHolderService.systemDefinition));
+    this.systemDefinitionHolderService.sendJson(savingSysDef).subscribe(res => {
+      this.commonService.showInfoMessage('پروژه با موفقیت تولید شد');
     });
   }
 
   reload() {
     this.ngOnInit();
-    const sysDef: SystemDefinition = JSON.parse(localStorage.getItem('json'));
+    const systemDefString = localStorage.getItem('system-definition');
+    if (!systemDefString) {
+      this.commonService.showErrorPureMessage('اطلاعات یافت نشد');
+      return;
+    }
+    const sysDef: SystemDefinition = JSON.parse(systemDefString);
     sysDef.entityDefinitionList.forEach(e => {
       e.entityFieldDefinitionList.forEach(f => {
         const c = new Choice();
@@ -145,7 +134,8 @@ export class EntityGeneratorComponent implements OnInit {
         // f.fieldType.metaType = c2;
       });
     });
-    this.systemDefinitionHolderService.setSystemDefinition(sysDef);
+    this.systemDefinitionHolderService.systemDefinition = sysDef;
+    this.commonService.showInfoMessage('بازیابی اطلاعات انجام شد');
   }
 
   refreshEntityTypes() {

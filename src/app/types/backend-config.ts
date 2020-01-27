@@ -19,8 +19,8 @@ export class BackendConfig {
     this.contextPath = 'generation' + new Date().getTime();
     this.backendPortNumber = 8080;
     this.basePackage = 'com.adldoost.generation';
-    this.targetPath = 'E:\\adldoost\\generation\\' + new Date().getTime();
-    this.fileUploadPath = 'E:\\adldoost\\upload\\';
+    this.targetPath = 'E:\\adldoost\\generated\\' + new Date().getTime() + '\\backend\\';
+    this.fileUploadPath = 'E:\\\\adldoost\\\\upload\\\\';
     this.backendGenerationConfig = new BackendGenerationConfig();
     this.mavenConfig = new MavenConfig();
     this.securityConfig = new SecurityConfig();

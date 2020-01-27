@@ -58,6 +58,7 @@ import {FieldsetModule} from 'primeng/fieldset';
 import { StringifyPipe } from './pipes/stringify.pipe';
 import { JsonizePipe } from './pipes/jsonize.pipe';
 import {OptionConverterPipe} from './pipes/option-converter.pipe';
+import { RegulizeStringPipe } from './regulize-string.pipe';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import {OptionConverterPipe} from './pipes/option-converter.pipe';
     StringifyPipe,
     JsonizePipe,
     OptionConverterPipe,
+    RegulizeStringPipe,
 
   ],
   imports: [

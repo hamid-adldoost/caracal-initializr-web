@@ -113,3 +113,28 @@ input {
   border-width: 1px !important;
   /*border-color: black !important;*/
 }
+
+.btn {
+  padding: 4px 8px !important;
+}
+
+th, td {
+  overflow: hidden;
+}
+
+.ui-toast-message-warn {
+  background: rgb(235, 235, 145);
+}
+
+.ui-toast-message-error {
+  background: rgb(235, 145, 145);
+}
+
+.ui-toast-message-success {
+  background: rgb(156, 235, 145) !important;
+}
+
+.ui-toast-message-info {
+  background: rgb(145, 199, 235);
+}
+

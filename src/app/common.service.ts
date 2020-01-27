@@ -66,7 +66,7 @@ export class CommonService {
     });
     return result;
   }
-  
+
   preparePureListToDropdown(input: any[]): any[] {
     if (!input) {
       return [];
@@ -130,5 +130,13 @@ export class CommonService {
     }
     return str;
   };
+
+  convertSortOrder(order: number): string {
+    if (order === 1) {
+      return 'asc';
+    } else {
+      return 'desc';
+    }
+  }
 
 }

@@ -11,19 +11,14 @@ export class SystemDefinitionHolderService {
 
   systemDefinition = new SystemDefinition();
 
-
   constructor(private httpClient: HttpClient) { }
 
-  public getSystemDefinition(): SystemDefinition {
-    return this.systemDefinition;
-  }
-
-  public setSystemDefinition(systemDefinition: SystemDefinition) {
-    this.systemDefinition = systemDefinition;
-  }
-
-  public sentJson(json: SystemDefinition): Observable<any> {
-    localStorage.setItem('json', JSON.stringify(json));
+  public sendJson(json: SystemDefinition): Observable<any> {
+    localStorage.setItem('system-definition', JSON.stringify(json));
     return this.httpClient.post(environment.baseServiceUrl + '/generator/generate', json);
+  }
+
+  public saveJson() {
+    localStorage.setItem('system-definition', JSON.stringify(this.systemDefinition));
   }
 }
