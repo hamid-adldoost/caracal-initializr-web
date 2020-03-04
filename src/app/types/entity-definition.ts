@@ -13,6 +13,7 @@ export class EntityDefinition {
   enableValidation = true;
   hasAttachment = true;
   gridColumns = '1';
+  isAuditable = true;
 
 
   constructor() {
