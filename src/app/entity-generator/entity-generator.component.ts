@@ -33,6 +33,8 @@ export class EntityGeneratorComponent implements OnInit {
   entityDefinitionList = [];
   options = [];
   choice = new Choice();
+  pascalCaseRegex = /^[A-Z][a-z]{1,50}$/;
+  camelCaseRegex = /[A-Z]?[a-z]+[A-Z]?[a-z]*$/;
 
   fieldTypeList: SelectItem[] = [
     {label: 'String', value: 'String'},

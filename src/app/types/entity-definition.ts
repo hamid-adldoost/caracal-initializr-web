@@ -25,6 +25,7 @@ export class EntityDefinition {
     field.fieldType.type.value = 'Long';
     field.farsiName = 'شناسه';
     field.name = 'id';
+    field.visible = false;
     this.entityFieldDefinitionList.push(field);
   }
 }

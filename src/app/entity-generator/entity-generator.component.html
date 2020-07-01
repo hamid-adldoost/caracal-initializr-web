@@ -27,7 +27,7 @@
                 Entity Name :
               </div>
               <div class="col-lg-9 col-md-6 col-sm-12">
-                <input name="entityNameInput{{i}}" pInputText type="text" [(ngModel)]="item.name">
+                <input name="entityNameInput{{i}}" pKeyFilter="alphanum" pInputText type="text" [(ngModel)]="item.name">
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12">
 
@@ -82,7 +82,7 @@
                           Field Name :
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                          <input name="fieldNameInput{{i}}{{j}}" pInputText type="text" [(ngModel)]="field.name">
+                          <input name="fieldNameInput{{i}}{{j}}" pKeyFilter="alphanum" pInputText type="text" [(ngModel)]="field.name">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
 
